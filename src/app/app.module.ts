@@ -13,6 +13,7 @@ import { DetalleComponent } from './detalle/detalle.component';
 import { LugaresComponent } from './lugares/lugares.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { LugaresService } from './services/lugares.service';
+import { CrearComponent } from './crear/crear.component';
 
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
@@ -20,11 +21,13 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 
+
 const appRoutes: Routes = [
   {path:'', component: LugaresComponent},
   {path:'lugares', component: LugaresComponent},
   {path:'detalle/:id', component: DetalleComponent},
-  {path:'contacto', component: ContactoComponent}
+  {path:'contacto', component: ContactoComponent},
+  {path:'crear', component: CrearComponent},
 ];
 
 @NgModule({
@@ -35,6 +38,7 @@ const appRoutes: Routes = [
     DetalleComponent,
     LugaresComponent,
     ContactoComponent,
+    CrearComponent
   ],
   imports: [
     BrowserModule,
