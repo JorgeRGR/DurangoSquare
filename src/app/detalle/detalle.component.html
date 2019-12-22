@@ -1,1 +1,13 @@
-<h1>Detalles</h1>
+<div  class="card card-body bg-light">
+    <a routerLink="/lugares">Lugares</a> / {{lugar.nombre}}
+</div>
+<div class="container">
+    <h1>{{lugar.nombre}}</h1>
+    <hr/>
+    <small>{{lugar.distancia}}</small>
+    <br>
+    <div  class="card card-body bg-light">
+        <p>{{lugar.description}}</p>
+        <b>Suscripción: {{lugar.plan}}</b>
+    </div>
+</div>
