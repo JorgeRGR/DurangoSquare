@@ -40,7 +40,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC2b6Zt4PzNFuGfjdYkKcFMG4I1iPfkg9U'
+      apiKey: environment.apiKeyGoogle
     }),
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
