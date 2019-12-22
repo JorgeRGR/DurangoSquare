@@ -1,5 +1,5 @@
  
- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">DurangoSquare!</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -7,36 +7,13 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Inicio<span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/lugares">Lugares<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contacto</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="/detalle">Detalle</a>
       </li>
     </ul>
   </div>
 </nav>
- 
- <h1>
-   Bienvenido a {{ title }}
- </h1>
- <hr />
- <agm-map [latitude]="lat" [longitude]="lng">
-   <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
- </agm-map>
- <hr />
- <div class="container">
-   <div class="row">
-     <div class="col-md-8">
-       <h2>Lugares Cercanos</h2>
-       <ul class="list-group">
-         <ng-container *ngFor="let lugar of lugares">  
-           <li class="list-group-item" *ngIf="lugar.active" >{{lugar.nombre}}</li>
-         </ng-container>
-       </ul>
-     </div>
-      <div class="col-md-4">
-       <h2>Lugares Destacados</h2>
-     </div>
-    </div>
- </div>
+<router-outlet></router-outlet>
