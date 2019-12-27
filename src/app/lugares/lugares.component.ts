@@ -9,7 +9,8 @@ export class LugaresComponent {
   title = 'DurangoSquare';
   lugares = null;
   lat:number = 24.0470502;
-  lng:number = -104.6560745;  
+  lng:number = -104.6560745;
+  error:string = null;
   constructor(private lugaresService: LugaresService){
     //Para socket
     /*
@@ -26,7 +27,13 @@ export class LugaresComponent {
       //El 'me = this' es porque el this dentro de map es diferente del this afuera del map.
       var me = this;
       me.lugares = Object.keys(me.lugares).map(function (key) { return me.lugares [key]; });
-    });
+    }, error => {
+      console.log(error);
+      var text =  'Tenemos algo de dificultades, disculpe las molestias. Error: '+error.statusText;
+      this.error = text;
+      //alert('Tenemos algo de dificultades, disculpe las molestias. Error: '+error.statusText);
+    }
+    );
   }
 
 }

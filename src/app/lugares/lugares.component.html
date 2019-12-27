@@ -15,6 +15,11 @@
           <ng-container *ngFor="let lugar of lugares">  
             <a routerLink="/crear/{{lugar.id}}"><li class="list-group-item">{{lugar.nombre}}</li></a>
           </ng-container>
+
+          <div *ngIf="error"class="alert alert-danger" role="alert">
+            {{error}}
+          </div>
+          
         </ul>
       </div>
        <div class="col-md-4">
