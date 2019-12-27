@@ -1,11 +1,13 @@
 import { Injectable } from "@angular/core";
 import { AngularFireDatabase } from '@angular/fire/database';
 import { apiKey } from '../../environments/googleConsoleKey';
-import { HttpClient } from '@angular/common/http';
+import { fireConf } from '../../environments/firebaseConfig';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 
 export class LugaresService{
+  API_ENDPOINT = fireConf.databaseURL;
     //any sirve para aceptar cualquier tipo de objeto
     lugares:any = [
         {id: 1, plan: 'pagado', cercania: 1, distancia: 2, active: true, nombre: 'Florería Gardenia', description: 'Descripción del negocio.'},
@@ -21,7 +23,8 @@ export class LugaresService{
     }
 
     public getLugares(){
-        return this.afDB.list('lugares/')
+        //return this.afDB.list('lugares/');
+        return this.http.get(this.API_ENDPOINT+'/lugares.json');
     }
     public buscarLugar(id){
         return this.lugares.filter((lugar) => {
@@ -30,7 +33,9 @@ export class LugaresService{
     }
 
     public guardarLugar(lugar){
-      this.afDB.database.ref('lugares/'+lugar.id).set(lugar);
+      //this.afDB.database.ref('lugares/'+lugar.id).set(lugar);
+      const headers = new HttpHeaders({"Content-Type":"application/json"});
+      return this.http.post(this.API_ENDPOINT+'/lugares.json',lugar,{headers:headers}).subscribe();
     }
 
     public editarLugar(lugar){
