@@ -30,12 +30,19 @@ export class LugaresService{
     }
 
     public guardarLugar(lugar){
-      console.log(lugar);
+      this.afDB.database.ref('lugares/'+lugar.id).set(lugar);
+    }
+
+    public editarLugar(lugar){
       this.afDB.database.ref('lugares/'+lugar.id).set(lugar);
     }
 
     public obtenerGeoData(direccion){
       return this.http.get('https://maps.google.com/maps/api/geocode/json?key='+apiKey+'&address='+direccion);
+    }
+
+    public getLugar(id){
+      return this.afDB.object('lugares/'+id);
     }
 
 }
