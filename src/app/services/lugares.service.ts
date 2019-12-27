@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import { AngularFireDatabase } from '@angular/fire/database';
+import { apiKey } from '../../environments/googleConsoleKey';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 
@@ -14,7 +16,7 @@ export class LugaresService{
         {id: 6, plan: 'gratuito', cercania: 3, distancia: 50, active: false, nombre: 'Liverpool', description: 'Descripción del negocio.'},
     ];
 
-    constructor(private afDB: AngularFireDatabase){
+    constructor(private afDB: AngularFireDatabase, private http: HttpClient){
 
     }
 
@@ -30,6 +32,10 @@ export class LugaresService{
     public guardarLugar(lugar){
       console.log(lugar);
       this.afDB.database.ref('lugares/'+lugar.id).set(lugar);
+    }
+
+    public obtenerGeoData(direccion){
+      return this.http.get('https://maps.google.com/maps/api/geocode/json?key='+apiKey+'&address='+direccion);
     }
 
 }
