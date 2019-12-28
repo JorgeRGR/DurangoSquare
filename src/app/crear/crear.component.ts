@@ -16,7 +16,7 @@ export class CrearComponent{
   lugar:any = {};
   id:any = null;
   results$ : Observable<any>;
-  private searchField: FormControl;
+  public searchField: FormControl;
     constructor(private lugaresService: LugaresService, private route:ActivatedRoute, private http:HttpClient){
       this.id = this.route.snapshot.params['id'];
       console.log(this.id);
