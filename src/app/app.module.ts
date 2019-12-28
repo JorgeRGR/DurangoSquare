@@ -21,6 +21,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { HttpClientModule } from '@angular/common/http';
+import { LinkifystrPipe } from './pipes/linkifystr.pipe';
 
 
 const appRoutes: Routes = [
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
     DetalleComponent,
     LugaresComponent,
     ContactoComponent,
-    CrearComponent
+    CrearComponent,
+    LinkifystrPipe
   ],
   imports: [
     BrowserModule,
