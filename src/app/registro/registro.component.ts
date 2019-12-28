@@ -16,4 +16,8 @@ export class RegistroComponent{
     this.autorizacionService.registro(this.registro.email,this.registro.password);
   }
 
+  facebookLogin(){
+    this.autorizacionService.facebookLogin();
+  }
+
 }
