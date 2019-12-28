@@ -4,6 +4,7 @@ import { apiKey } from '../../environments/googleConsoleKey';
 import { fireConf } from '../../environments/firebaseConfig';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { AutorizacionService } from './autorizacion.service';
 
 @Injectable()
 
@@ -29,11 +30,14 @@ export class LugaresService{
       //Http get
       //return this.http.get(this.API_ENDPOINT+'/lugares.json');
       //Http get con map
+      /*
       return this.http.get(this.API_ENDPOINT+'/.json').pipe(
         map(
           resultado => resultado['lugares']
         )
-   );
+      );
+      */
+      return this.afDB.list('lugares/').valueChanges();
     }
     public buscarLugar(id){
         return this.lugares.filter((lugar) => {

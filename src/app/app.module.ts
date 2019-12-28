@@ -22,6 +22,10 @@ import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { HttpClientModule } from '@angular/common/http';
 import { LinkifystrPipe } from './pipes/linkifystr.pipe';
+import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
+import { AutorizacionService } from './services/autorizacion.service';
+import { MyGuard } from './services/my-guard.service';
 
 
 const appRoutes: Routes = [
@@ -29,7 +33,9 @@ const appRoutes: Routes = [
   {path:'lugares', component: LugaresComponent},
   {path:'detalle/:id', component: DetalleComponent},
   {path:'contacto', component: ContactoComponent},
-  {path:'crear/:id', component: CrearComponent},
+  {path:'crear/:id', component: CrearComponent, canActivate:[MyGuard]},
+  {path: 'login', component: LoginComponent},
+  {path: 'registro', component: RegistroComponent}
 ];
 
 @NgModule({
@@ -41,7 +47,9 @@ const appRoutes: Routes = [
     LugaresComponent,
     ContactoComponent,
     CrearComponent,
-    LinkifystrPipe
+    LinkifystrPipe,
+    LoginComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +66,7 @@ const appRoutes: Routes = [
     AngularFireDatabaseModule,
     HttpClientModule
   ],
-  providers: [LugaresService],
+  providers: [LugaresService, AutorizacionService, MyGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
