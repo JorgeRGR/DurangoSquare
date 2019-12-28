@@ -13,13 +13,22 @@
         <a class="btn btn-primary" routerLink="/crear/new">Crear Nuevo Negocio</a>
         <ul class="list-group">
           <ng-container *ngFor="let lugar of lugares">  
-            <a routerLink="/crear/{{lugar.id}}"><li class="list-group-item">{{lugar.nombre}}</li></a>
+            <a routerLink="/crear/{{lugar.id}}">
+              <li class="list-group-item">{{lugar.nombre | lowercase}} 
+                <br>
+                <small>Creado: {{lugar.id | date:'short' | uppercase}}</small>
+                <br>
+                {{'12345.65872143' | number:'1.2-2'}}
+              </li>
+              <!-- |date:'medium' <- muestra la hora | date:'short' <-muestra fecha compacta | date:'fullDate' <-muestra fecha completa
+              | date:'shortTime' |date:'mediumTime' -->
+            </a>
           </ng-container>
 
           <div *ngIf="error"class="alert alert-danger" role="alert">
             {{error}}
           </div>
-          
+
         </ul>
       </div>
        <div class="col-md-4">
