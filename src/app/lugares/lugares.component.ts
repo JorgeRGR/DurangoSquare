@@ -8,23 +8,19 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   animations: [
     trigger('contenedorAnimable',[
       state('inicial', style({
-        opacity: 0,
-        backgroundColor: 'green',
-        transform: 'rotate3d(0,0,0,0deg)'
+        opacity: 0
       })),
       state('final', style({
-        opacity: 1,
-        backgroundColor: 'yellow',
-        transform: 'rotate3d(5,10,20,30deg)'
+        opacity: 1
       })),
-      transition('inicial => final', animate(1000)),
+      transition('inicial => final', animate(2000)),
       transition('final => inicial', animate(1000))
     ])
   ]
 })
 export class LugaresComponent {
   title = 'DurangoSquare';
-  state = 'final';
+  state = 'inicial';
 
   lugares = null;
   lat:number = 24.0470502;
@@ -36,13 +32,13 @@ export class LugaresComponent {
   }
 
   animacionInicia(e){
-    console.log('Iniciado');
-    console.log(e);
+    //console.log('Iniciado');
+    //console.log(e);
   }
 
   animacionTermina(e){
-    console.log('Terminado');
-    console.log(e);
+    //console.log('Terminado');
+    //console.log(e);
   }
 
   constructor(private lugaresService: LugaresService){
@@ -61,6 +57,7 @@ export class LugaresComponent {
       //El 'me = this' es porque el this dentro de map es diferente del this afuera del map.
       var me = this;
       me.lugares = Object.keys(me.lugares).map(function (key) { return me.lugares [key]; });
+      this.state = 'final';
     }, error => {
       console.log(error);
       var text =  'Tenemos algo de dificultades, disculpe las molestias. Error: '+error.statusText;
